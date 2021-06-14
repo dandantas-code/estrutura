@@ -38,7 +38,7 @@ async function put(req, res) {
 
     res.send({
         message: "success",
-        product
+        product 
     })
 
 /*     const product = await ProductsModel.findOne({ _id: id })
@@ -51,8 +51,21 @@ async function put(req, res) {
     }) */
 }
 
+async function del(req,res) {
+    const { id } = req.params
+
+    const del = await ProductsModel.deleteOne({ _id: id })
+
+    let message = del.ok ? 'success' : 'error'
+
+    res.send ({
+        message: 'success'
+    })
+}
+
 module.exports = {
     get,
     post,
     put,
+    del,
 }
